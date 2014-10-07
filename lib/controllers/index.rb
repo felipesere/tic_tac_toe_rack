@@ -1,5 +1,6 @@
 require 'erb'
 require 'ostruct'
+require 'tic_tac_toe_core/players/player_types'
 
 module WebDisplay
   module Controllers
@@ -12,7 +13,7 @@ module WebDisplay
       end
 
       def bind
-        OpenStruct.new({game_types: ["foo", "bar" ]}).instance_eval { binding }
+        OpenStruct.new({game_types: TicTacToeCore::Players::PlayerTypes.player_combinations}).instance_eval { binding }
       end
     end
   end
