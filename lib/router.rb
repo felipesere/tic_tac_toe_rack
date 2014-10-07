@@ -7,8 +7,16 @@ module WebDisplay
     def call(env)
       path = env['PATH_INFO']
       match = @mapping.find { |regex, _|  path_match(regex, path) }
-      params = extract_variables(path, match.first)
-      match.last.call(env, params)
+      if match
+        params = extract_variables(path, match.first)
+        match.last.call(env, params)
+      else
+        not_found
+      end
+    end
+
+    def not_found
+     [ 404, {'Content-Type' => 'text/plain'}, ["Not Found"]]
     end
 
     def path_match(regex, path)

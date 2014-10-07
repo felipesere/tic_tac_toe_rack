@@ -10,6 +10,13 @@ RSpec.describe WebDisplay::Router do
     expect(callable).to be_called
   end
 
+  it 'returns a 404 if not match found' do
+    router = WebDisplay::Router.new({})
+    result = router.call(request_for("/"))
+    expect(result).to eq [404, {'Content-Type' => 'text/plain'}, ["Not Found"]]
+
+  end
+
   it 'forwards calls to start' do
     callable = Callable.new
     mapping = { "/start" => callable }
