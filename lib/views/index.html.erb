@@ -3,6 +3,12 @@
   <head>
   </head>
   <body>
-    Hello World from template
+    <h1>Choose Players:</h1>
+    <form action="/start" method="post">
+      <% for type in game_types %>
+      <input type="radio" name="first" value="first_value" checked>First inner</br>
+      <% end %>
+      <input type="submit" value="Play!">
+    </form>
   </body>
 </html>

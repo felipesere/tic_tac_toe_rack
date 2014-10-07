@@ -15,6 +15,7 @@ GEM
     rspec-mocks (3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.0)
+    tic_tac_toe_core (0.0.1)
 
 PLATFORMS
   ruby
@@ -22,3 +23,4 @@ PLATFORMS
 DEPENDENCIES
   rack (~> 1.5.2)
   rspec (~> 3.1.0)
+  tic_tac_toe_core (~> 0.0.1)

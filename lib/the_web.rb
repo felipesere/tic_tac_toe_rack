@@ -1,10 +1,15 @@
+require 'router'
+require 'controllers/index'
+
 module WebDisplay
   class TheWeb
+    def initialize
+      mapping = { '/' => Controllers::Index.new }
+      @router = Router.new(mapping)
+    end
+
     def call(env)
-
-      template = ERB.new(File.read("lib/views/index.html.erb"));
-
-      [ 200, {'Content-Type' => 'text/html'}, [template.result(binding)] ]
+      @router.call(env)
     end
   end
 end
