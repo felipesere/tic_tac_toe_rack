@@ -1,10 +1,16 @@
 require 'router'
 require 'controllers/index'
+require 'controllers/start'
+require 'controllers/view_board'
+require 'game_repository'
 
 module WebDisplay
   class TheWeb
     def initialize
-      mapping = { '/' => Controllers::Index.new }
+      repo = GameRepository.new
+      mapping = { '/'      => Controllers::Index.new,
+                  '/start' => Controllers::Start.new(repo),
+                  '/game/{id}' => Controllers::ViewBoard.new(repo)}
       @router = Router.new(mapping)
     end
 

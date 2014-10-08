@@ -19,6 +19,10 @@ module WebDisplay
     def delete(id)
       @storage.delete(id)
     end
+
+    def count
+      @storage.count
+    end
   end
 end
 

@@ -5,8 +5,8 @@
   <body>
     <h1>Choose Players:</h1>
     <form action="/start" method="post">
-      <% for type in game_types %>
-        <input type="radio" name="first" value="first_value"><%= type %></br>
+      <% game_types.each do |id, value| %>
+        <input type="radio" name="choice" value="<%= id %>"><%= value %></br>
       <% end %>
       <input type="submit" value="Play!">
     </form>

@@ -1,20 +1,24 @@
 require 'erb'
 require 'ostruct'
-require 'tic_tac_toe_core/players/player_types'
+require 'web_player_factory'
 
 module WebDisplay
   module Controllers
     class Index
       def initialize
         @template = ERB.new(File.read("lib/views/index.html.erb"));
+        @factory = WebPlayerFactory.new
       end
       def call(env, param)
-        [ 200, {'Content-Type' => 'text/html'}, [ @template.result(bind) ] ]
+        [ 200, {'Content-Type' => 'text/html'}, [ template.result(bind) ] ]
       end
 
       def bind
-        OpenStruct.new({game_types: TicTacToeCore::Players::PlayerTypes.player_combinations}).instance_eval { binding }
+        OpenStruct.new({game_types: factory.player_combinations}).instance_eval { binding }
       end
+
+      private
+      attr_reader :template, :factory
     end
   end
 end

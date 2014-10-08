@@ -1,3 +1,5 @@
+require 'rack/request'
+
 module WebDisplay
   class Router
     def initialize(mapping)
@@ -9,10 +11,14 @@ module WebDisplay
       match = @mapping.find { |regex, _|  path_match(regex, path) }
       if match
         params = extract_variables(path, match.first)
-        match.last.call(env, params)
+        match.last.call(request(env), params)
       else
         not_found
       end
+    end
+
+    def request(env)
+      Rack::Request.new(env)
     end
 
     def not_found
@@ -33,7 +39,11 @@ module WebDisplay
     end
 
     def extract_variables(input, regex)
-      input.match(build(regex))
+      match = input.match(build(regex))
+      match.names.reduce({}) do |acc, name|
+        acc[name.to_sym] = match[name]
+        acc
+      end
     end
   end
 end
