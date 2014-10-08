@@ -3,9 +3,9 @@ require 'tic_tac_toe_core/players/player_factory'
 
 module WebDisplay
   class WebPlayerFactory
-    def initialize
+    def initialize(params)
       @original = TicTacToeCore::Players::PlayerTypes.player_combinations
-      @factory  = TicTacToeCore::Players::PlayerFactory.new(io: "sentinel")
+      @factory  = TicTacToeCore::Players::PlayerFactory.new(params)
     end
 
     def player_combinations

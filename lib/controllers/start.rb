@@ -6,9 +6,9 @@ module WebDisplay
   module Controllers
     class Start
 
-      def initialize(the_repo)
-        @repo = the_repo
-        @factory = WebPlayerFactory.new
+      def initialize(repo, factory)
+        @repo = repo
+        @factory = factory
       end
 
       def call(request, params)

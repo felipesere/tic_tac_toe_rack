@@ -5,9 +5,9 @@ require 'web_player_factory'
 module WebDisplay
   module Controllers
     class Index
-      def initialize
+      def initialize(factory)
         @template = ERB.new(File.read("lib/views/index.html.erb"));
-        @factory = WebPlayerFactory.new
+        @factory = factory
       end
       def call(env, param)
         [ 200, {'Content-Type' => 'text/html'}, [ template.result(bind) ] ]
