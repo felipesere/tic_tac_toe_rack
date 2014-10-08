@@ -5,8 +5,8 @@
   <body>
     <h1>The Board</h1>
     <% rows.each do |row| %>
-       <% row.each do |link| %>
-         <a href="<%= link %>">foobar</a></br>
+       <% row.each do |cell_presenter| %>
+        <%= cell_presenter.print %>
        <% end %>
     <% end %>
     </form>

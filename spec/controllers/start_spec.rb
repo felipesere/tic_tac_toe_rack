@@ -1,6 +1,6 @@
 require 'controllers/start'
 require 'game_repository'
-require 'ostruct'
+require 'fake_request'
 
 RSpec.describe WebDisplay::Controllers::Start do
   let(:repo) { WebDisplay::GameRepository.new }
@@ -21,10 +21,6 @@ RSpec.describe WebDisplay::Controllers::Start do
   end
 
   def request(content)
-    OpenStruct.new(post?: true, body: body(content))
-  end
-
-  def body(content)
-    OpenStruct.new(read: content)
+    FakeRequest.new(:post, content)
   end
 end

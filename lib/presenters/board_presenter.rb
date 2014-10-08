@@ -8,13 +8,10 @@ module WebDisplay
 
       def rows
         board.elements.collect.each.with_index(1) do |cell, index|
-          link(index)
+          CellPresenter.new(@game_id, cell, index)
         end.each_slice(TicTacToeCore::Board::SIZE).to_a
       end
 
-      def link(move)
-        "/game/#{game_id}/move/#{move}"
-      end
 
       def bind
         binding
@@ -22,6 +19,26 @@ module WebDisplay
 
       private
       attr_reader :game_id, :board
+    end
+
+    class CellPresenter
+      def initialize(game_id, value, move)
+        @game_id = game_id
+        @value = value
+        @move  = move
+      end
+
+      def print
+        if @value.nil?
+         "<a href=\"#{link}\">#{@move}</a></br>"
+        else
+          @value
+        end
+      end
+
+      def link
+        "/game/#{@game_id}/move/#{@move}"
+      end
     end
   end
 end
