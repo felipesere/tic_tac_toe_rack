@@ -11,7 +11,7 @@ module WebDisplay
       end
 
       def call(env, param)
-        respond(render('index.html.erb', game_types: factory.player_combinations))
+        respond('index.html.erb', game_types: factory.player_combinations)
       end
 
       private

@@ -18,8 +18,8 @@ module WebDisplay
         end
       end
 
-      def respond(body)
-        [ 200, {'Content-Type' => 'text/html'}, [body] ]
+      def respond(name, params = {})
+        [ 200, {'Content-Type' => 'text/html'}, [render(name, params)] ]
       end
 
       def layout
