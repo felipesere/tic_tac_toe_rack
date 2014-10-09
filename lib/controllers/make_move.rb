@@ -1,6 +1,8 @@
+require 'controllers/base'
+
 module WebDisplay
   module Controllers
-    class MakeMove
+    class MakeMove < BaseController
       def initialize(repo, web_io)
         @repo = repo
         @web_io = web_io
@@ -17,10 +19,6 @@ module WebDisplay
 
       private
       attr_reader :repo, :web_io
-
-      def redirect_to(path)
-          [ 302, { 'Location' => path }, []]
-      end
     end
   end
 end

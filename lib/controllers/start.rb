@@ -1,10 +1,10 @@
-require 'uri'
 require 'web_player_factory'
 require 'tic_tac_toe_core/game'
+require 'controllers/base'
 
 module WebDisplay
   module Controllers
-    class Start
+    class Start < BaseController
 
       def initialize(repo, factory)
         @repo = repo
@@ -21,21 +21,13 @@ module WebDisplay
       end
 
       def create_game(choice)
-        players = @factory.get_players(choice)
-        game = TicTacToeCore::Game.new(*players)
+        first,second = @factory.get_players(choice)
+        game = TicTacToeCore::Game.new(first, second)
         repo.store(game)
       end
 
-      def redirect_to(path)
-          [ 302, { 'Location' => path }, []]
-      end
-
       def choice(input)
-        decode(input).split(/=/).last.to_i
-      end
-
-      def decode(input)
-        input
+        input.split(/=/).last.to_i
       end
 
       private

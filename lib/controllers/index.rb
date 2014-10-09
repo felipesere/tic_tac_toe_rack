@@ -1,16 +1,17 @@
 require 'erb'
 require 'ostruct'
 require 'web_player_factory'
+require 'controllers/base'
 
 module WebDisplay
   module Controllers
-    class Index
+    class Index < BaseController
       def initialize(factory)
-        @template = ERB.new(File.read("lib/views/index.html.erb"));
         @factory = factory
       end
+
       def call(env, param)
-        [ 200, {'Content-Type' => 'text/html'}, [ template.result(bind) ] ]
+        respond(template('index.html.erb').result(bind))
       end
 
       def bind
@@ -18,7 +19,7 @@ module WebDisplay
       end
 
       private
-      attr_reader :template, :factory
+      attr_reader :factory
     end
   end
 end

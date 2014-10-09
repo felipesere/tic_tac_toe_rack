@@ -9,6 +9,10 @@
         <%= cell_presenter.print %>
        <% end %>
     <% end %>
+    <br/>
+    <% if has_ended? %>
+      <a href="/">End</a>
+    <% end %>
     </form>
   </body>
 </html>

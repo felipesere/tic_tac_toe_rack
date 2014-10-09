@@ -1,9 +1,10 @@
 module WebDisplay
   module Presenter
     class BoardPresenter
-      def initialize(game_id, board)
+      def initialize(game_id, game)
         @game_id = game_id
-        @board   = board
+        @board   = game.current_board
+        @game    = game
       end
 
       def rows
@@ -12,13 +13,16 @@ module WebDisplay
         end.each_slice(TicTacToeCore::Board::SIZE).to_a
       end
 
+      def has_ended?
+        game.is_finished?
+      end
 
       def bind
         binding
       end
 
       private
-      attr_reader :game_id, :board
+      attr_reader :game_id, :board, :game
     end
 
     class CellPresenter
