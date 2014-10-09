@@ -10,15 +10,17 @@ module WebDisplay
       end
 
       def call(req, id: id)
+        p repo
         game = load_game(id)
         response = respond('board.html.erb', context: presenter(id, game))
         if game.is_computers_turn? && !game.is_finished?
-          response[1]['Refresh'] = "2; url=/game/#{id}/move/-1"
+          response[1]['Refresh'] = "1; url=/game/#{id}/move/-1"
         end
         response
       end
 
       def load_game(id)
+        p id
         repo.find(id.to_i)
       end
 

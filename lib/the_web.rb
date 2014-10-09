@@ -9,6 +9,7 @@ require 'game_repository'
 module WebDisplay
   class TheWeb
     def initialize
+
       repo = GameRepository.new
       web_io = WebIO.new
       factory = WebPlayerFactory.new(io: web_io)

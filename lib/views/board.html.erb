@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <h1>The Board</h1>
-    <% rows.each do |row| %>
-       <% row.each do |cell_presenter| %>
-        <%= cell_presenter.print %>
-       <% end %>
-    <% end %>
-    <br/>
-    <% if has_ended? %>
-      <a href="/">End</a>
-    <% end %>
-    </form>
-  </body>
-</html>
+<h1>The Board</h1>
+<div class="game">
+  <% rows.each do |row| %>
+    <div class="row">
+      <% row.each do |cell_presenter| %>
+        <div class="cell">
+          <%= cell_presenter.print %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<br/>
+<% if has_ended? %>
+  <a href="/">End</a>
+<% end %>
+

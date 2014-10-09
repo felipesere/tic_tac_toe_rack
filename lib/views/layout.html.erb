@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="/assets/application.css">
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <%= yield %>
+    <div class="container" >
+      <div class="one-third"></div>
+      <div class="one-third">
+        <%= yield %>
+      </div>
+      <div class="one-third"></div>
+    </div>
   </body>
 </html>

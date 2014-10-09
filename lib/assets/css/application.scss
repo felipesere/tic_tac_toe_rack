@@ -1,0 +1,40 @@
+@import "pure-min";
+
+div.container {
+  @extend .pure-g;
+}
+
+div.one-third {
+  @extend .pure-u-1-3;
+}
+
+label.choice {
+  @extend .pure-checkbox
+}
+
+button.play-button {
+  @extend .pure-button;
+  @extend .pure-button-primary;
+  @extend .pure-button-active;
+  width: 100%;
+}
+
+.game {
+  border: 1px black solid;
+  position: absolute;
+}
+
+.row {
+  border: 1px blue solid;
+  clear: both;
+}
+
+.cell {
+  border: 1px red solid;
+  float: left;
+  font-size: 55px;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
+
