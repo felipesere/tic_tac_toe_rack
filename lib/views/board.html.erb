@@ -1,17 +1,22 @@
-<h1>The Board</h1>
-<div class="game">
-  <% rows.each do |row| %>
-    <div class="row">
-      <% row.each do |cell_presenter| %>
-        <div class="cell">
-          <%= cell_presenter.print %>
+<center><h1>The Board</h1></center>
+<div class="pure-g">
+  <div class="game">
+    <% rows.each do |row| %>
+      <div class="row">
+        <% row.each do |cell_presenter| %>
+          <div class="cell">
+            <%= cell_presenter.print %>
+          </div>
+          <div class="pure-u-1-8"></div>
+        <% end %>
         </div>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
+  <br/>
+</div>
+<div class="pure-g">
+  <% if has_ended? %>
+    <a class="end-button" href="/">End</a>
   <% end %>
 </div>
-<br/>
-<% if has_ended? %>
-  <a href="/">End</a>
-<% end %>
 

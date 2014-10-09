@@ -19,22 +19,28 @@ button.play-button {
   width: 100%;
 }
 
+a.end-button {
+  @extend .pure-button;
+  @extend .pure-button-primary;
+  @extend .pure-button-active;
+  width: 100%;
+}
+
+
 .game {
-  border: 1px black solid;
-  position: absolute;
+  @extend .pure-u-1;
 }
 
 .row {
-  border: 1px blue solid;
-  clear: both;
+  @extend .pure-g;
+  height: 100px;
 }
 
 .cell {
-  border: 1px red solid;
-  float: left;
+  @extend .pure-u-1-4;
+  border-radius: 15px;
+  background: #858282;
   font-size: 55px;
   text-align: center;
-  width: 100px;
-  height: 100px;
 }
 

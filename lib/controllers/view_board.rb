@@ -10,7 +10,6 @@ module WebDisplay
       end
 
       def call(req, id: id)
-        p repo
         game = load_game(id)
         response = respond('board.html.erb', context: presenter(id, game))
         if game.is_computers_turn? && !game.is_finished?
