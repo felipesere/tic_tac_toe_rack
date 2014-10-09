@@ -24,7 +24,7 @@ module WebDisplay
 
       def render(id, game)
         presenter = Presenter::BoardPresenter.new(id, game)
-        respond(template('board.html.erb').result(presenter.bind))
+        respond(template('board.html.erb').render(presenter))
       end
 
       private

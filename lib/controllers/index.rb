@@ -11,11 +11,7 @@ module WebDisplay
       end
 
       def call(env, param)
-        respond(template('index.html.erb').result(bind))
-      end
-
-      def bind
-        OpenStruct.new({game_types: factory.player_combinations}).instance_eval { binding }
+        respond(template('index.html.erb').render(Object.new, game_types: factory.player_combinations))
       end
 
       private

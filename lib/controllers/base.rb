@@ -1,3 +1,5 @@
+require 'tilt'
+
 module WebDisplay
   module Controllers
     class BaseController
@@ -10,7 +12,7 @@ module WebDisplay
       end
 
       def template(name)
-        @template = ERB.new(File.read("lib/views/#{name}"));
+       Tilt::ERBTemplate.new("lib/views/#{name}")
       end
 
       def respond(body)
