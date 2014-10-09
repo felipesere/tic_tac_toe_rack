@@ -2,7 +2,7 @@ module WebDisplay
   class GameRepository
     @@counter = 1
     def initialize
-      @storage = {}
+      clear
     end
 
     def store(game)
@@ -22,6 +22,11 @@ module WebDisplay
 
     def count
       @storage.count
+    end
+
+    def clear
+      @@counter = 1
+      @storage = {}
     end
   end
 end

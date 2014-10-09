@@ -2,7 +2,7 @@ require 'tic_tac_toe_core/players/human_player'
 require 'web_player_factory'
 
 RSpec.describe WebDisplay::WebPlayerFactory do
-  let(:factory) { WebDisplay::WebPlayerFactory.new }
+  let(:factory) { WebDisplay::WebPlayerFactory.new(io: "sentinel") }
 
   it 'provides player combinations as number array' do
     player_combinations = factory.player_combinations

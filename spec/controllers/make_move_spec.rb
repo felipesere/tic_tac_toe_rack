@@ -1,3 +1,4 @@
+require 'web_io'
 require 'tic_tac_toe_core/game'
 require 'controllers/make_move'
 require 'game_repository'
@@ -6,10 +7,11 @@ require 'fake_request'
 
 RSpec.describe WebDisplay::Controllers::MakeMove do
   it 'applies a move to a game' do
+    web_io = WebDisplay::WebIO.new
     repo = WebDisplay::GameRepository.new
     game = TicTacToeCore::Game.new(player(:x, 4), player(:o, 5))
     id = repo.store(game)
-    controller = WebDisplay::Controllers::MakeMove.new(repo)
+    controller = WebDisplay::Controllers::MakeMove.new(repo, web_io)
     controller.call(request, id: id, move: 1)
     expect(game.current_board.possible_moves.count).to eq 8
   end
