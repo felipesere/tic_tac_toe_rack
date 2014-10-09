@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <h1>Choose Players:</h1>
-    <form action="/start" method="post">
-      <% game_types.each do |id, value| %>
-        <input type="radio" name="choice" value="<%= id %>"><%= value %></br>
-      <% end %>
-      <input type="submit" value="Play!">
-    </form>
-  </body>
-</html>
+<h1>Choose Players:</h1>
+<form action="/start" method="post">
+  <% game_types.each do |id, value| %>
+    <input type="radio" name="choice" value="<%= id %>"><%= value %></br>
+  <% end %>
+  <input type="submit" value="Play!">
+</form>
