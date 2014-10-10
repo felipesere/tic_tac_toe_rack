@@ -1,10 +1,14 @@
+require 'tic_tac_toe_core/board'
+
 module WebDisplay
   module Presenter
     class BoardPresenter
-      def initialize(game_id, game)
+
+      def initialize(game_id, game, message = nil)
         @game_id = game_id
         @board   = game.current_board
         @game    = game
+        @message = message
       end
 
       def rows
@@ -17,31 +21,37 @@ module WebDisplay
         game.is_finished?
       end
 
-      def bind
-        binding
+      def has_message?
+        !@message.nil?
       end
+
+      def message
+        @message
+      end
+
 
       private
       attr_reader :game_id, :board, :game
     end
 
     class CellPresenter
-      def initialize(game_id, value, move)
+      attr_reader :game_id, :mark, :move
+      def initialize(game_id, mark, move)
         @game_id = game_id
-        @value = value
+        @mark = mark
         @move  = move
       end
 
       def print
-        if @value.nil?
-         "<a href=\"#{link}\">#{@move}</a></br>"
+        if mark.nil?
+         "<a href=\"#{link}\">#{move}</a></br>"
         else
-          @value
+          mark
         end
       end
 
       def link
-        "/game/#{@game_id}/move/#{@move}"
+        "/game/#{game_id}/move/#{move}"
       end
     end
   end

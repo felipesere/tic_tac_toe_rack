@@ -16,10 +16,14 @@
   <br/>
 </div>
 <div class="pure-g">
-  <div class="pure-u-1-1">
-    <% if has_ended? %>
+  <% if has_ended? %>
+    <div class="pure-u-1-1">
       <a class="end-button" href="/">End</a>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+  <% if has_message? %>
+    <div class="message-box">
+      <%= message %>
+    </div>
+  <% end %>
 </div>
-

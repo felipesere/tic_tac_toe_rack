@@ -29,7 +29,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    tic_tac_toe_core (0.0.2)
+    tic_tac_toe_core (0.0.1)
     tilt (1.4.1)
 
 PLATFORMS
@@ -41,5 +41,5 @@ DEPENDENCIES
   rspec-html-matchers (~> 0.6.1)
   sass (~> 3.4.5)
   sprockets (~> 2.12.2)
-  tic_tac_toe_core (~> 0.0.1)
+  tic_tac_toe_core (= 0.0.1)
   tilt

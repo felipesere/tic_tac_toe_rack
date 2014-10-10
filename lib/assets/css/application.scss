@@ -53,6 +53,14 @@ a.end-button {
   transform: translateY(25%);
 }
 
+div.message-box {
+  @extend .pure-u-1-1;
+  background: #09D016;
+  margin: 10px 0px;
+  padding: 10px 0px;
+  text-align: center;
+}
+
 a:link, a:visited {
   text-decoration: none;
   color: black;

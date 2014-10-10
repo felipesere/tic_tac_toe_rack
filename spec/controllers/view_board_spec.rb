@@ -31,6 +31,13 @@ RSpec.describe WebDisplay::Controllers::ViewBoard do
    expect(response[1]).to include 'Refresh'
  end
 
+ it 'shows a "draw" when the game is completed with a draw' do
+   game = finsihed_game
+   id = repo.store(game)
+   response = controller.call(request, id: id)
+   expect(response.last.first).to include "draw"
+ end
+
  def finsihed_game
    first  = ScriptablePlayer.new(:x, 1, 3, 4, 5, 8)
    second = ScriptablePlayer.new(:o, 2, 9, 6, 7)
