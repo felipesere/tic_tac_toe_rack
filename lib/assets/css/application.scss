@@ -20,10 +20,12 @@ button.play-button {
 }
 
 a.end-button {
+  @extend .pure-u-1-1;
   @extend .pure-button;
   @extend .pure-button-primary;
   @extend .pure-button-active;
-  width: 100%;
+  margin: 10px 0px;
+  padding: 10px 0px;
 }
 
 
@@ -34,15 +36,15 @@ a.end-button {
 .row {
   @extend .pure-g;
   height: 100px;
-  margin-bottom: 10px;
 }
 
 .cell {
-  @extend .pure-u-1-4;
-  border-radius: 15px;
+  @extend .pure-u-1-3;
   background: #858282;
   font-size: 55px;
   text-align: center;
+  border: 5px black solid;
+  box-sizing: border-box;
 }
 
 .cell-content {
