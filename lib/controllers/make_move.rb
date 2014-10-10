@@ -13,7 +13,9 @@ module WebDisplay
         move = params[:move].to_i
         web_io.set(move)
         game = repo.find(id)
-        game.tick
+        if !game.is_finished?
+          game.tick
+        end
         redirect_to("/game/#{id}")
       end
 

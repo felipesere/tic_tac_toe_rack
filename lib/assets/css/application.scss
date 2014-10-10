@@ -34,6 +34,7 @@ a.end-button {
 .row {
   @extend .pure-g;
   height: 100px;
+  margin-bottom: 10px;
 }
 
 .cell {
@@ -44,3 +45,13 @@ a.end-button {
   text-align: center;
 }
 
+.cell-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(25%);
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: black;
+}

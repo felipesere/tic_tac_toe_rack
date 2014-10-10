@@ -1,13 +1,15 @@
-<center><h1>The Board</h1></center>
+<h1>The Board</h1>
 <div class="pure-g">
   <div class="game">
     <% rows.each do |row| %>
       <div class="row">
         <% row.each do |cell_presenter| %>
           <div class="cell">
+            <div class="cell-content">
             <%= cell_presenter.print %>
+            </div>
           </div>
-          <div class="pure-u-1-8"></div>
+          <div class="pure-u-1-24"></div>
         <% end %>
         </div>
     <% end %>
@@ -15,8 +17,10 @@
   <br/>
 </div>
 <div class="pure-g">
-  <% if has_ended? %>
-    <a class="end-button" href="/">End</a>
-  <% end %>
+  <div class="pure-u-1-1">
+    <% if has_ended? %>
+      <a class="end-button" href="/">End</a>
+    <% end %>
+  </div>
 </div>
 
