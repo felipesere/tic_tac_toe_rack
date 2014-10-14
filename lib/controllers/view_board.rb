@@ -11,11 +11,19 @@ module WebDisplay
 
       def call(req, id: id)
         game = load_game(id)
-        response = respond('board.html.erb', context: presenter(id, game))
-        if should_refresh(game)
-          response[1]['Refresh'] = "1; url=/game/#{id}/move/-1"
+        if game
+          respond_with_game(game, id)
+        else
+          redirect_to('/')
         end
-        response
+      end
+
+      def respond_with_game(game,id)
+          response = respond('board.html.erb', context: presenter(id, game))
+          if should_refresh(game)
+            response[1]['Refresh'] = "1; url=/game/#{id}/move/-1"
+          end
+          response
       end
 
       def should_refresh(game)

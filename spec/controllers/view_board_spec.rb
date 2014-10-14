@@ -14,6 +14,11 @@ RSpec.describe WebDisplay::Controllers::ViewBoard do
     expect(controller.load_game(id)).to eq "sentinel"
  end
 
+ it 'redirect to the root if the game it not found' do
+    response = controller.call(request, id: 1)
+    expect(response[0]).to eq 302
+ end
+
  it 'shows a "finish" button when the there are no more moves left' do
     game = finsihed_game
     id = repo.store(game)

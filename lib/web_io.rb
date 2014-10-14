@@ -1,11 +1,11 @@
 module WebDisplay
   class WebIO
-    def set(move)
+    def set_next_move(move)
       @move = move
     end
 
     def ready?
-      @move.nil?
+      !@move.nil?
     end
 
     def read
