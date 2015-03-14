@@ -7,7 +7,7 @@ require 'controllers/make_move'
 require 'game_repository'
 
 module WebDisplay
-  class TheWeb
+  class Dispatcher
     def initialize
 
       repo = GameRepository.new

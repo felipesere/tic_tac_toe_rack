@@ -5,7 +5,7 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
 require 'rack'
 require 'sprockets'
 require 'sass'
-require 'the_web'
+require 'dispatcher'
 
 module WebDisplay
   app = Rack::Builder.new do
@@ -15,7 +15,7 @@ module WebDisplay
       run environment
     end
 
-    main =  TheWeb.new
+    main =  Dispatcher.new
     map "/" do
       run main
     end

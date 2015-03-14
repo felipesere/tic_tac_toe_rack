@@ -8,10 +8,6 @@ RSpec.describe WebDisplay::Controllers::Start do
   let(:repo) { WebDisplay::GameRepository.new }
   let(:controller) { described_class.new(repo, factory)}
 
-  it 'creates a new game in the repo' do
-    controller.call(request("choice=1"), {})
-  end
-
   it 'results in a redirect' do
     response = controller.call(request("choice=1"), {})
     expect(repo.count).to eq 1

@@ -10,6 +10,12 @@ RSpec.describe WebDisplay::Controllers::MakeMove do
   let(:repo) { WebDisplay::GameRepository.new }
   let(:controller)  {WebDisplay::Controllers::MakeMove.new(repo, web_io) }
 
+  it 'redirect to root if game is not found' do
+    response = controller.call(request, id: 1, move: 1)
+    expect(response[0]).to eq 302
+    expect(response[1]).to include('Location' => '/')
+  end
+
   it 'applies a move to a game' do
     game = TicTacToeCore::Game.new(player(:x, 4), player(:o, 5))
     id = repo.store(game)
@@ -19,7 +25,9 @@ RSpec.describe WebDisplay::Controllers::MakeMove do
 
   it 'does not make a move if game is finsihed' do
     game = double("game")
+
     allow(game).to receive(:is_finished?) { true }
+    
     id = repo.store(game)
     controller.call(request, id: id, move: 1)
   end
@@ -27,7 +35,6 @@ RSpec.describe WebDisplay::Controllers::MakeMove do
   def player(name, *moves)
     ScriptablePlayer.new(name, *moves)
   end
-
 
   def request
     FakeRequest.new
